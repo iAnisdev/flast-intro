@@ -14,3 +14,8 @@ def about():
 @app.route('/<name>')
 def greet(name):
     return f"<p>Hello, {name}!</p>"
+
+@app.route('/user/<int:user_id>')
+def user(user_id):
+    print(type(user_id))
+    return f"<p>User {user_id}</p>"
