@@ -9,3 +9,8 @@ def hello():
 @app.route('/about')
 def about():
     return "<p>About me</p>"
+
+
+@app.route('/<name>')
+def greet(name):
+    return f"<p>Hello, {name}!</p>"
