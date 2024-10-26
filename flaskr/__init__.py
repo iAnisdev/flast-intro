@@ -1,5 +1,6 @@
 from flask import Flask
 import os
+from . import auth
 
 
 def create_app(config=None):
@@ -22,5 +23,7 @@ def create_app(config=None):
     @app.get("/")
     def hello():
         return "Hello, World!"
+    
+    app.register_blueprint(auth.bp)
 
     return app
