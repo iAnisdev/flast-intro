@@ -1,4 +1,4 @@
-from flask import Flask , url_for
+from flask import Flask , url_for , request
 from markupsafe import escape
 
 app = Flask(__name__)
@@ -11,15 +11,21 @@ def hello():
 def about():
     return "<p>About me</p>"
 
-
 @app.route('/<name>')
 def greet(name):
     return f"<p>Hello, {name}!</p>"
 
-@app.route('/user/<int:user_id>')
+@app.route('/user/<int:user_id>' , methods=['POST'])
 def user(user_id):
-    print(type(user_id))
-    return f"<p>User {user_id}</p>"
+    if request.method == 'POST':
+        return f"<p>User {user_id}</p>"
+    else:
+        return f"<p>Invalid request</p>"
+
+@app.post('/auth/login')
+def login():
+    return 'Login'
+
 
 @app.route('/path/<path:subpath>')
 def show_subpath(subpath):
