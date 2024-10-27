@@ -40,7 +40,7 @@ def login():
         for user in data['users']:
             if user['email'] == email:
                 if verify_password(user['password'] , password):
-                    token = encode_token(user)
+                    token = encode_token({'id': user['id']})
                     session.clear()
                     session['token'] = token
                     flash('User logged in successfully' , "success")
