@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Register{% endblock %}
 
 {% block content %}
 
@@ -6,7 +7,7 @@
     <div class="card" style="width: 25rem;">
         <form class="p-4" method="post">
             <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
-
+            {% include 'shared/flash.html' %}
             <div class="form-floating">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Name">
                 <label for="name">Name</label>
