@@ -1,7 +1,6 @@
 from flask import Flask
 import os
-from . import auth
-
+from . import auth , home
 
 def create_app(config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -20,10 +19,7 @@ def create_app(config=None):
     except OSError:
         pass
 
-    @app.get("/")
-    def hello():
-        return "Hello, World!"
-    
     app.register_blueprint(auth.bp)
+    app.register_blueprint(home.bp)
 
     return app
