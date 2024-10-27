@@ -1,9 +1,10 @@
 from flask import Flask
-import os
+import os , uuid
 from . import auth , home
 
 def create_app(config=None):
     app = Flask(__name__, instance_relative_config=True)
+    app.secret_key = str(uuid.uuid4())
 
     app.config.from_mapping(
         SECRET="dev", DATABASE=os.path.join(app.instance_path, "flaskr.sqlite")
