@@ -1,7 +1,7 @@
 import jwt
-import uuid
+import secrets
 
-secret = str(uuid.uuid4())
+secret = secrets.token_hex()
 
 def encode_token(data):
     return jwt.encode(data,secret, algorithm="HS256")
