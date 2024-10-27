@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-<div>
-    <h1>Home Page</h1>
-</div>
+<main class="vw-100">
+    {% include 'shared/navbar.html' %}
+    <h1>Home</h1>
+    <p>Welcome to the Flaskr homepage.</p>
+</main>
 {% endblock %}
