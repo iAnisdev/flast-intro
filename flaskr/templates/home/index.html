@@ -18,6 +18,7 @@
                             {% if not todo.completed %}
                                 <a href="/todo/complete/{{todo.id}}" class="link-success">Complete</a>
                             {% endif %}
+                            <a href="/todo/edit/{{todo.id}}" class="ms-2">Edit</a>
                         </div>
                     </div>
                     <span class="d-block" style="text-align: left;">{{todo.formatted_date}}</span>
