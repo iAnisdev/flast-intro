@@ -2,9 +2,28 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<main class="vw-100">
+<main class="vw-100 bg-dark">
     {% include 'shared/navbar.html' %}
-    <h1>Home</h1>
-    <p>Welcome to the Flaskr homepage.</p>
+    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+        <div class="my-3 p-3 bg-body rounded shadow-sm w-50">
+            {% include 'shared/flash.html' %}
+            <h6 class="border-bottom pb-2 mb-0 text-dark">My Todo's</h6>
+            {% for todo in todos %}
+            <div class="d-flex text-body-secondary pt-3">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100 ms-2">
+                    <div class="d-flex justify-content-between">
+                        <strong class="text-gray-dark {% if todo.completed %}text-decoration-line-through{% endif %}">
+                            {{ loop.index }} - {{todo.title}}</strong>
+                        <div>
+                    </div>
+                    <span class="d-block" style="text-align: left;">{{todo.formatted_date}}</span>
+                </div>
+            </div>
+            {% endfor %}
+            <small class="d-block text-end mt-3">
+                <a href="/todo/add">Add Todo</a>
+            </small>
+        </div>
+    </div>
 </main>
 {% endblock %}

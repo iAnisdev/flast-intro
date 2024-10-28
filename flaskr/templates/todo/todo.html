@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Todo{% endblock %}
+
+{% block content %}
+
+<div class="d-flex align-items-center justify-content-center w-100 vh-100">
+    <div class="card" style="width: 25rem;">
+        {% if mode == 'add' %}
+            {% include 'add.html' %}
+        {% else %}
+            {% include 'edit.html' %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 from flask import Flask
 import os , uuid
-from . import auth , home
+from . import auth , home , todo
 
 def create_app(config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -22,5 +22,6 @@ def create_app(config=None):
 
     app.register_blueprint(auth.bp)
     app.register_blueprint(home.bp)
+    app.register_blueprint(todo.bp)
 
     return app
