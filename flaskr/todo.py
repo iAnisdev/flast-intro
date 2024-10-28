@@ -29,3 +29,28 @@ def add():
             return redirect('/')
     else:
         return render_template('todo.html', mode='add')
+
+@bp.route('/complete/<string:id>', methods=['GET'])
+@is_logged_in
+def complete(id):
+    with open(file_path, 'r') as todo_file:
+        try:
+            data = json.load(todo_file)
+        except json.JSONDecodeError:
+            data = {}
+    if 'todos' not in data:
+        flash('Todo not found' , "danger")
+        return redirect('/')
+    user_id = decode_token(session['token']).get('id')
+    for todo in data['todos']:
+        if todo['id'] == id:
+            if todo['user_id'] != user_id:
+                flash('You are not allowed to complete this todo' , "danger")
+                return redirect('/')
+            todo['completed'] = True
+            with open(file_path, 'w') as todo_file:
+                json.dump(data, todo_file, indent=4)
+                flash('Todo completed successfully' , "success")
+                return redirect('/')
+    flash('Todo not found' , "danger")
+    return redirect('/')

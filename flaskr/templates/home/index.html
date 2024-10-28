@@ -15,6 +15,10 @@
                         <strong class="text-gray-dark {% if todo.completed %}text-decoration-line-through{% endif %}">
                             {{ loop.index }} - {{todo.title}}</strong>
                         <div>
+                            {% if not todo.completed %}
+                                <a href="/todo/complete/{{todo.id}}" class="link-success">Complete</a>
+                            {% endif %}
+                        </div>
                     </div>
                     <span class="d-block" style="text-align: left;">{{todo.formatted_date}}</span>
                 </div>
