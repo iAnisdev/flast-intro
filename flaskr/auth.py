@@ -14,6 +14,7 @@ def is_logged_in(view):
             return view(**kwargs)
         else:
             return redirect(url_for('auth.login'))
+    wrapped_view.__name__ = view.__name__
     return wrapped_view
 
 def is_not_logged_in(view):
@@ -22,6 +23,7 @@ def is_not_logged_in(view):
             return view(**kwargs)
         else:
             return redirect('/')
+    wrapped_view.__name__ = view.__name__
     return wrapped_view
 
 @bp.route('/login' , methods=['GET' , 'POST'])
