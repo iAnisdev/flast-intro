@@ -43,7 +43,7 @@ def login():
                     token = encode_token({'id': user['id']})
                     session.clear()
                     session['token'] = token
-                    flash('User logged in successfully' , "success")
+                    flash('Welcome to Todo App!' , "success")
                     return redirect('/')
                 else:
                     flash('Invalid password' , "danger")
